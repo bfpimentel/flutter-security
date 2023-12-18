@@ -22,10 +22,8 @@ class SecurityClientDemoApp extends StatelessWidget {
         future: DIContainer.init(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print("BRUNO: Initialized DI");
             return const LoginScreen();
           } else {
-            print("BRUNO: Loading DI.");
             return const FullScreenLoading();
           }
         },

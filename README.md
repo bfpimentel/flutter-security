@@ -1,16 +1,43 @@
-# flutter_security
+# Flutter Security Client
 
-A new Flutter project.
+Stupid simple Security Client for storing encrypted data locally.
+
+## About
+
+This project uses SQLite as the database for the encrypted keys and, for the encryption part, it uses the SQLCipher layer through the sqflite lib.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+An instance of SecurityClient can be created easily by passing just two params to its static constructor:
 
-A few resources to get you started if this is your first Flutter project:
+**Package isn't available through pub.get yet.**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```dart
+final SecurityClient securityClient = await SecurityClient.create("<db-name>", "<db-password>");
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+// e.g.
+final SecurityClient securityClient = await SecurityClient.create("my-cool-database", "1234567890");
+```
+
+Multiple instances can be created at once since each client will use a separate database file for each one.
+
+## API
+
+For more information regarding all the available methods, the 
+
+## Demo
+
+The root of the repository contains a demonstration of SecurityClient's simplicity.
+
+To run the demo, you **must** pass an environment variable called `GLOBAL_SECURITY_CLIENT_PASSWORD` with any text value.
+
+The demo project is using Redux for state management.
+
+## Contributing
+
+The SecurityClient development files is located in the [security](security/) folder of this repository.
+
+There aren't any special processes to this step, so to start contributing:
+1. Have Flutter installed;
+2. Clone the project;
+3. Install the dependencies with `flutter pub get`.
