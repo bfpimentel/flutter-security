@@ -10,7 +10,7 @@ This project uses SQLite as the database for the encrypted keys and, for the enc
 
 An instance of SecurityClient can be created easily by passing just two params to its static constructor:
 
-**Package isn't available through pub.get yet.**
+**Package isn't available through pub.dev yet.**
 
 ```dart
 final SecurityClient securityClient = await SecurityClient.create("<db-name>", "<db-password>");
@@ -23,7 +23,7 @@ Multiple instances can be created at once since each client will use a separate 
 
 ## API
 
-For more information regarding all the available methods, the 
+For more information regarding all the available methods, the documentation can be found [here](https://htmlpreview.github.io/?https://github.com/bfpimentel/flutter-security/blob/chore/dart_docs/doc/api/index.html/index.html).
 
 ## Demo
 
