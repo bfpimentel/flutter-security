@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_security/components/fullscreen_loading.dart';
 import 'package:flutter_security/models/secret.dart';
-import 'package:flutter_security/models/user_info.dart';
+import 'package:flutter_security/screens/add_secret_screen.dart';
 import 'package:security/security_client.dart';
 
 class SecretsScreen extends StatefulWidget {
   final String username;
-  final SecurityClient securityClient;
+  final SecurityClient userSecurityClient;
 
   const SecretsScreen({
     super.key,
     required this.username,
-    required this.securityClient,
+    required this.userSecurityClient,
   });
 
   @override
@@ -19,7 +19,16 @@ class SecretsScreen extends StatefulWidget {
 }
 
 class _SecretsScreenState extends State<SecretsScreen> {
-  UserInfo? userInfo;
+  addSecret(final BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddSecretScreen(
+          userSecurityClient: widget.userSecurityClient,
+        ),
+      ),
+    ).then((value) => null);
+  }
 
   @override
   Widget build(final BuildContext context) {
@@ -29,7 +38,7 @@ class _SecretsScreenState extends State<SecretsScreen> {
         title: Text("Secrets for ${widget.username}"),
       ),
       body: FutureBuilder(
-        future: widget.securityClient.getAll(),
+        future: widget.userSecurityClient.getAll(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final List<Secret> secrets = snapshot.data!.entries.map(
@@ -54,7 +63,7 @@ class _SecretsScreenState extends State<SecretsScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => addSecret(context),
         tooltip: "Add",
         child: const Icon(Icons.add),
       ),

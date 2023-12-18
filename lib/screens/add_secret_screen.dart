@@ -1,56 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_security/di/di_container.dart';
 import 'package:flutter_security/models/secret.dart';
-import 'package:flutter_security/screens/secrets_screen.dart';
 import 'package:security/security_client.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class AddSecretScreen extends StatefulWidget {
+  final SecurityClient userSecurityClient;
+
+  const AddSecretScreen({super.key, required this.userSecurityClient});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AddSecretScreen> createState() => _AddSecretScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  SecurityClient get globalSecurityClient => DIContainer.instance.globalSecurityClient;
+class _AddSecretScreenState extends State<AddSecretScreen> {
 
   // data
-  String username = "";
-  String password = "";
+  String name = "";
+  String secret = "";
 
   // state
+  bool isSubmitting = false;
   bool isSubmitEnabled = false;
 
   List<Secret> users = [];
 
-  setUsername(final String value) {
-    username = value;
+  setName(final String value) {
+    name = value;
     validateInputs();
   }
 
-  setPassword(final String value) {
-    password = value;
+  setSecret(final String value) {
+    secret = value;
     validateInputs();
   }
 
   validateInputs() {
-    final isSubmitEnabled = username.isNotEmpty && password.isNotEmpty;
+    final isSubmitEnabled = name.isNotEmpty && secret.isNotEmpty;
     setState(() => this.isSubmitEnabled = isSubmitEnabled);
   }
 
   submit(final BuildContext context) async {
-    final SecurityClient userSecurityClient = await SecurityClient.create(username, password);
+    await widget.userSecurityClient.add(name, secret);
 
     // todo
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SecretsScreen(
-          username: username,
-          userSecurityClient: userSecurityClient,
-        ),
-      ),
-    );
+    Navigator.pop(context);
   }
 
   @override
@@ -58,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Login"),
+        title: const Text("Users"),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -68,23 +61,23 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 12.0),
             child: TextField(
-              key: const Key("username"),
+              key: const Key("secret"),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Username",
+                hintText: "Secret Name",
               ),
-              onChanged: setUsername,
+              onChanged: setName,
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(24.0, 12.0, 24.0, 24.0),
             child: TextField(
-              key: const Key("password"),
+              key: const Key("value"),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Password",
+                hintText: "Secret Value",
               ),
-              onChanged: setPassword,
+              onChanged: setSecret,
             ),
           ),
         ],
@@ -92,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: isSubmitEnabled ? () => submit(context) : null,
         tooltip: "Submit",
-        child: const Icon(Icons.arrow_right_alt_rounded),
+        child: const Icon(Icons.add),
       ),
     );
   }
