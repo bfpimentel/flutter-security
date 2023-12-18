@@ -14,6 +14,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   security:
     path: security
+  meta: ^1.10.0
+  redux: ^5.0.0
+  flutter_redux: ^0.10.0
+  redux_thunk: ^0.4.0
 
 dev_dependencies:
   flutter_test:

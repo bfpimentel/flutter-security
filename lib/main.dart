@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_security/components/fullscreen_loading.dart';
 import 'package:flutter_security/di/di_container.dart';
-import 'package:flutter_security/screens/login_screen.dart';
+import 'package:flutter_security/screens/login/login_screen.dart';
 
 void main() {
   runApp(const SecurityClientDemoApp());
@@ -22,8 +22,10 @@ class SecurityClientDemoApp extends StatelessWidget {
         future: DIContainer.init(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            print("BRUNO: Initialized DI");
             return const LoginScreen();
           } else {
+            print("BRUNO: Loading DI.");
             return const FullScreenLoading();
           }
         },
