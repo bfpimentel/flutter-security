@@ -39,18 +39,24 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   submit(final BuildContext context) async {
-    final SecurityClient userSecurityClient = await SecurityClient.create(username, password);
+    try {
+      final SecurityClient userSecurityClient = await SecurityClient.create(username, password);
 
-    // todo
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SecretsScreen(
-          username: username,
-          userSecurityClient: userSecurityClient,
+      // todo
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SecretsScreen(
+            username: username,
+            userSecurityClient: userSecurityClient,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (exception) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Invalid password for user $username.")),
+      );
+    }
   }
 
   @override

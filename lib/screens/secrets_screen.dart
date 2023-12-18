@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_security/components/fullscreen_loading.dart';
 import 'package:flutter_security/models/secret.dart';
 import 'package:flutter_security/screens/add_secret_screen.dart';
 import 'package:security/security_client.dart';
@@ -19,6 +18,31 @@ class SecretsScreen extends StatefulWidget {
 }
 
 class _SecretsScreenState extends State<SecretsScreen> {
+  // logic
+  bool isLoaded = false;
+
+  // state
+  List<Secret> secrets = [];
+
+  loadSecrets() async {
+    if (isLoaded) return;
+
+    final List<Secret> secrets = (await widget.userSecurityClient.getAll())
+        .entries
+        .map(
+          (element) => Secret(
+            key: element.key,
+            value: element.value,
+          ),
+        )
+        .toList();
+
+    setState(() {
+      isLoaded = true;
+      this.secrets = secrets;
+    });
+  }
+
   addSecret(final BuildContext context) {
     Navigator.push(
       context,
@@ -27,39 +51,26 @@ class _SecretsScreenState extends State<SecretsScreen> {
           userSecurityClient: widget.userSecurityClient,
         ),
       ),
-    ).then((value) => null);
+    ).then((_) {
+      isLoaded = false;
+      loadSecrets();
+    });
   }
 
   @override
   Widget build(final BuildContext context) {
+    loadSecrets();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("Secrets for ${widget.username}"),
       ),
-      body: FutureBuilder(
-        future: widget.userSecurityClient.getAll(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final List<Secret> secrets = snapshot.data!.entries.map(
-              (element) {
-                return Secret(
-                  key: element.key,
-                  value: element.value,
-                );
-              },
-            ).toList();
-
-            return ListView.builder(
-              itemCount: secrets.length,
-              itemBuilder: (context, index) {
-                final Secret user = secrets[index];
-                return secretItem(context, user);
-              },
-            );
-          } else {
-            return const FullScreenLoading();
-          }
+      body: ListView.builder(
+        itemCount: secrets.length,
+        itemBuilder: (context, index) {
+          final Secret user = secrets[index];
+          return secretItem(context, user);
         },
       ),
       floatingActionButton: FloatingActionButton(
