@@ -1,1 +1,2 @@
 -keep class net.sqlcipher.** { *; }
+-keep class io.flutter.plugin.editing.** { *; }
