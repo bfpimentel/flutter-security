@@ -35,7 +35,24 @@ class SecurityClient {
     );
   }
 
-  Future<String?> get(final String key) async {
+  Future<Map<String, String>> getAll() async {
+    final database = _database;
+    final List<Map<String, dynamic>> values = await database.query(_keysTable);
+
+    print("BRUNO: Encoded values: $values");
+
+    final Map<String, String> map = {};
+
+    for (var element in values) {
+      map[element.keys.first] = element.values.first;
+    }
+
+    print("BRUNO: Mapped values: $map");
+
+    return map;
+  }
+
+  Future<String?> getOne(final String key) async {
     final database = _database;
     final List<Map<String, dynamic>> values = await database.query(
       _keysTable,
@@ -54,5 +71,10 @@ class SecurityClient {
       where: "$_keysTableIdField = ?",
       whereArgs: [key],
     );
+  }
+
+  Future<void> destroy() async {
+    final database = _database;
+    await deleteDatabase(database.path);
   }
 }

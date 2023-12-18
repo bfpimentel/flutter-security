@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_security/components/fullscreen_loading.dart';
 import 'package:flutter_security/di/di_container.dart';
-import 'package:flutter_security/screens/home_screen.dart';
+import 'package:flutter_security/screens/login_screen.dart';
 
 void main() {
   runApp(const SecurityClientDemoApp());
@@ -21,20 +22,9 @@ class SecurityClientDemoApp extends StatelessWidget {
         future: DIContainer.init(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomeScreen();
+            return const LoginScreen();
           } else {
-            return const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SizedBox(
-                  width: 32,
-                  height: 32,
-                  child: CircularProgressIndicator(),
-                )
-              ],
-            );
+            return const FullScreenLoading();
           }
         },
       ),
