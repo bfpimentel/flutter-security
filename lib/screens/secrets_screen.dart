@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_security/models/secret.dart';
-import 'package:flutter_security/screens/add_secret_screen.dart';
+import 'package:flutter_security/screens/add_secrets/add_secret_screen.dart';
 import 'package:security/security_client.dart';
 
 class SecretsScreen extends StatefulWidget {

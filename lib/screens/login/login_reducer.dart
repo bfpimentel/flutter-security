@@ -24,9 +24,6 @@ class LoginReducer extends ReducerClass<LoginState> {
     return state;
   }
 
-  bool _areInputsValid({
-    required final String username,
-    required final String password,
-  }) =>
+  bool _areInputsValid({required final String username, required final String password}) =>
       username.isNotEmpty && password.isNotEmpty;
 }

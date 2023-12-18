@@ -14,17 +14,17 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginViewModel {
+class LoginViewModel {
   final LoginState state;
   final Function(LoginAction) dispatch;
 
-  _LoginViewModel._({
+  LoginViewModel._({
     required this.state,
     required this.dispatch,
   });
 
-  factory _LoginViewModel.fromStore(final Store<LoginState> store) {
-    return _LoginViewModel._(state: store.state, dispatch: store.dispatch);
+  factory LoginViewModel.fromStore(final Store<LoginState> store) {
+    return LoginViewModel._(state: store.state, dispatch: store.dispatch);
   }
 }
 
@@ -59,10 +59,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(final BuildContext context) {
     return StoreProvider(
       store: DIContainer.instance.provideLoginStore(provideViewSideEffects(context)),
-      child: StoreConnector<LoginState, _LoginViewModel>(
-        converter: _LoginViewModel.fromStore,
+      child: StoreConnector<LoginState, LoginViewModel>(
+        converter: LoginViewModel.fromStore,
         distinct: false,
-        builder: (final BuildContext context, final _LoginViewModel viewModel) {
+        builder: (final BuildContext context, final LoginViewModel viewModel) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).colorScheme.inversePrimary,
