@@ -1,5 +1,5 @@
-import 'package:flutter_security/screens/add_secrets/add_secret_action.dart';
-import 'package:flutter_security/screens/add_secrets/add_secret_state.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_action.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_state.dart';
 import 'package:redux/redux.dart';
 import 'package:security/security_client.dart';
 
@@ -11,7 +11,6 @@ class AddSecretSideEffects extends MiddlewareClass<AddSecretState> {
   @override
   call(final Store<AddSecretState> store, final action, final next) async {
     if (action is AddSecretActionSubmit) {
-      print("BRUNO: Submitting");
       await userSecurityClient.add(store.state.name, store.state.value);
       next(const AddSecretActionNavigateBack());
       return;

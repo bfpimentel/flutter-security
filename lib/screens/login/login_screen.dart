@@ -3,9 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_security/di/di_container.dart';
 import 'package:flutter_security/screens/login/login_action.dart';
 import 'package:flutter_security/screens/login/login_state.dart';
+import 'package:flutter_security/screens/secrets/secrets_screen.dart';
 import 'package:redux/redux.dart';
-
-import '../secrets_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

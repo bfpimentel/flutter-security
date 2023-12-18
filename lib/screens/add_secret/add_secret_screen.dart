@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_security/di/di_container.dart';
-import 'package:flutter_security/screens/add_secrets/add_secret_action.dart';
-import 'package:flutter_security/screens/add_secrets/add_secret_state.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_action.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_state.dart';
 import 'package:redux/redux.dart';
 import 'package:security/security_client.dart';
 

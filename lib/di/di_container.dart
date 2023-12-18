@@ -1,12 +1,14 @@
-import 'package:flutter_security/screens/add_secrets/add_secret_reducer.dart';
-import 'package:flutter_security/screens/add_secrets/add_secret_side_effects.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_reducer.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_side_effects.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_state.dart';
 import 'package:flutter_security/screens/login/login_reducer.dart';
 import 'package:flutter_security/screens/login/login_side_effects.dart';
+import 'package:flutter_security/screens/login/login_state.dart';
+import 'package:flutter_security/screens/secrets/secrets_reducer.dart';
+import 'package:flutter_security/screens/secrets/secrets_side_effects.dart';
+import 'package:flutter_security/screens/secrets/secrets_state.dart';
 import 'package:redux/redux.dart';
 import 'package:security/security_client.dart';
-
-import '../screens/add_secrets/add_secret_state.dart';
-import '../screens/login/login_state.dart';
 
 class DIContainer {
   // constants
@@ -45,6 +47,14 @@ class DIContainer {
       LoginReducer(),
       middleware: [LoginSideEffects(), viewSideEffects],
       initialState: LoginState.initialState(),
+    );
+  }
+
+  Store<SecretsState> provideSecretsStore(final SecurityClient userSecurityClient) {
+    return Store<SecretsState>(
+      SecretsReducer(),
+      middleware: [SecretsSideEffects(userSecurityClient: userSecurityClient)],
+      initialState: SecretsState.initialState(),
     );
   }
 

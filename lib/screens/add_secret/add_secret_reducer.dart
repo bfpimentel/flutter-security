@@ -1,5 +1,5 @@
-import 'package:flutter_security/screens/add_secrets/add_secret_action.dart';
-import 'package:flutter_security/screens/add_secrets/add_secret_state.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_action.dart';
+import 'package:flutter_security/screens/add_secret/add_secret_state.dart';
 import 'package:redux/redux.dart';
 
 class AddSecretReducer extends ReducerClass<AddSecretState> {
