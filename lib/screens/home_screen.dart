@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_security/di/di_container.dart';
 import 'package:flutter_security/models/user_config.dart';
 import 'package:security/security_client.dart';
 
@@ -15,18 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
   static const String _isInitializedKey = "isInitialized";
   static const String _usersKey = "users";
 
-  SecurityClient? _securityClient;
+  SecurityClient get _securityClient => DIContainer.instance.globalSecurityClient;
 
   List<UserConfig> users = [];
 
   void _initSecurityClient() async {
-    _securityClient = await SecurityClient.create("sopinha", "4322");
-
-    if (await _securityClient?.get(_isInitializedKey) == null) {
+    if (await _securityClient.get(_isInitializedKey) == null) {
       _initUsers();
     }
 
-    final encodedConfigs = await _securityClient?.get(_usersKey);
+    final encodedConfigs = await _securityClient.get(_usersKey);
     if (encodedConfigs != null) {
       final List<dynamic> decodedList = jsonDecode(encodedConfigs);
       final List<UserConfig> mappedList = decodedList.map((e) => UserConfig.fromJson(e)).toList();
@@ -45,13 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final encodedConfigs = jsonEncode(configs);
 
-    await _securityClient?.add(_usersKey, encodedConfigs);
-    await _securityClient?.add(_isInitializedKey, "1");
+    await _securityClient.add(_usersKey, encodedConfigs);
+    await _securityClient.add(_isInitializedKey, "1");
   }
 
   @override
   Widget build(final BuildContext context) {
-    if (_securityClient == null) _initSecurityClient();
+    _initSecurityClient();
 
     return Scaffold(
       appBar: AppBar(
