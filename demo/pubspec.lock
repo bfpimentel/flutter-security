@@ -142,7 +142,7 @@ packages:
   security_client:
     dependency: "direct main"
     description:
-      path: security_client
+      path: ".."
       relative: true
     source: path
     version: "0.1.0"

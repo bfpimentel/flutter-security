@@ -27,7 +27,7 @@ For more information regarding all the available methods, the documentation can 
 
 ## Demo
 
-The root of the repository contains a demonstration of SecurityClient's simplicity.
+The [demo](./demo) folder contains a demonstration of a SecurityClient's implementation.
 
 To run the demo, you **must** pass an environment variable called `GLOBAL_SECURITY_CLIENT_PASSWORD` with any text value.
 
