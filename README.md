@@ -6,11 +6,17 @@ Stupid simple Security Client for storing encrypted data locally.
 
 This project uses SQLite as the database for the encrypted keys and, for the encryption part, it uses the SQLCipher layer through the sqflite lib.
 
+## Installation
+
+SecurityClient can be installed with a single command:
+
+```
+flutter pub add security_client
+```
+
 ## Getting Started
 
 An instance of SecurityClient can be created easily by passing just two params to its static constructor:
-
-**Package isn't available through pub.dev yet.**
 
 ```dart
 final SecurityClient securityClient = await SecurityClient.create("<db-name>", "<db-password>");
