@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:security/security.dart';
+import 'package:security_client/security.dart';
 
 void main() {
   test('adds one to input values', () {

@@ -8,7 +8,7 @@ import 'package:flutter_security/screens/secrets/secrets_reducer.dart';
 import 'package:flutter_security/screens/secrets/secrets_side_effects.dart';
 import 'package:flutter_security/screens/secrets/secrets_state.dart';
 import 'package:redux/redux.dart';
-import 'package:security/security_client.dart';
+import 'package:security_client/security_client.dart';
 
 class DIContainer {
   // constants

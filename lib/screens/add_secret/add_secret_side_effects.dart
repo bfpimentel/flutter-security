@@ -1,7 +1,7 @@
 import 'package:flutter_security/screens/add_secret/add_secret_action.dart';
 import 'package:flutter_security/screens/add_secret/add_secret_state.dart';
 import 'package:redux/redux.dart';
-import 'package:security/security_client.dart';
+import 'package:security_client/security_client.dart';
 
 class AddSecretSideEffects extends MiddlewareClass<AddSecretState> {
   final SecurityClient userSecurityClient;

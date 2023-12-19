@@ -1,7 +1,7 @@
-name: security
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+name: security_client
+description: "Stupid Simple Encrypted Storage."
+version: 0.1.0
+homepage: https://bfpimentel.github.io/flutter-security
 
 environment:
   sdk: '>=3.2.2 <4.0.0'

@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  security:
-    path: security
+  security_client:
+    path: ./security_client
   meta: ^1.10.0
   redux: ^5.0.0
   flutter_redux: ^0.10.0

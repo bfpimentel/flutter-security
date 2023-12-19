@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:security/security_client.dart';
+import 'package:security_client/security_client.dart';
 
 @immutable
 abstract class LoginAction {
