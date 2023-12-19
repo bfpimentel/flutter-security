@@ -23,7 +23,7 @@ Multiple instances can be created at once since each client will use a separate 
 
 ## API
 
-For more information regarding all the available methods, the documentation can be found [here](https://htmlpreview.github.io/?https://github.com/bfpimentel/flutter-security/blob/chore/dart_docs/doc/api/index.html/index.html).
+For more information regarding all the available methods, the documentation can be found [here](https://bfpimentel.github.io/flutter-security/security/SecurityClient-class.html).
 
 ## Demo
 
