@@ -18,7 +18,7 @@ class SecurityClient {
   SecurityClient._(final Database database) : _database = database;
 
   /// Creates instance for SecurityClient for [name] with [password].
-  /// 
+  ///
   /// Returns [Future] of [SecurityClient].
   /// If an instance with the given [name] was already created, it will only open the database for it.
   ///
@@ -56,7 +56,7 @@ class SecurityClient {
   }
 
   /// Get all saved entries in the current [SecurityClient] instance database.
-  /// 
+  ///
   /// Returns a [Map], each element being a pair of key and value.
   ///
   /// ```
@@ -77,7 +77,7 @@ class SecurityClient {
   }
 
   /// Get a single entry in the current [SecurityClient] instance database.
-  /// 
+  ///
   /// Returns the [String] value if [key] exists. Returns null if it doesn't.
   ///
   /// ```
