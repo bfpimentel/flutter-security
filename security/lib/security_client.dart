@@ -3,6 +3,11 @@ library security;
 import 'package:path/path.dart';
 import 'package:sqflite_sqlcipher/sqflite.dart';
 
+/// [SecurityClient] class.
+///
+/// All of the available methods to store and manage encrypted keys are going to be available through this class.
+///
+/// An instance can be created through calling the method [create].
 class SecurityClient {
   static const String _keysTable = "keys";
   static const String _keysTableKeyColumn = "key";
