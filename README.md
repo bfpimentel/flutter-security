@@ -35,7 +35,7 @@ The demo project is using Redux for state management.
 
 ## Contributing
 
-The SecurityClient development files is located in the [security](security/) folder of this repository.
+The SecurityClient development files is located in the root of this repository.
 
 There aren't any special processes to this step, so to start contributing:
 1. Have Flutter installed;

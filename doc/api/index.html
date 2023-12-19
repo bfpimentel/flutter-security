@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <meta name="generator" content="made with love by dartdoc 7.0.1-wip">
-  <meta name="description" content="security API docs, for the Dart programming language.">
-  <title>security - Dart API docs</title>
+  <meta name="description" content="security_client API docs, for the Dart programming language.">
+  <title>security_client - Dart API docs</title>
 
 
   
@@ -29,9 +29,9 @@
 <header id="title">
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
-    <li class="self-crumb">security package</li>
+    <li><a href="https://bfpimentel.github.io/flutter-security">security_client package</a></li>
   </ol>
-  <div class="self-name">security</div>
+  <div class="self-name">security_client</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -52,34 +52,33 @@
   <div id="dartdoc-main-content" class="main-content">
       
 <section class="desc markdown">
-  <!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+  <h1 id="flutter-security-client">Flutter Security Client</h1>
+<p>Stupid simple Security Client for storing encrypted data locally.</p>
+<h2 id="about">About</h2>
+<p>This project uses SQLite as the database for the encrypted keys and, for the encryption part, it uses the SQLCipher layer through the sqflite lib.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>An instance of SecurityClient can be created easily by passing just two params to its static constructor:</p>
+<p><strong>Package isn't available through pub.dev yet.</strong></p>
+<pre class="language-dart"><code class="language-dart">final SecurityClient securityClient = await SecurityClient.create("&lt;db-name&gt;", "&lt;db-password&gt;");
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-<p>TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.</p>
-<h2 id="features">Features</h2>
-<p>TODO: List what your package can do. Maybe include images, gifs, or videos.</p>
-<h2 id="getting-started">Getting started</h2>
-<p>TODO: List prerequisites and provide or point to information on how to
-start using the package.</p>
-<h2 id="usage">Usage</h2>
-<p>TODO: Include short and useful examples for package users. Add longer examples
-to <code>/example</code> folder.</p>
-<pre class="language-dart"><code class="language-dart">const like = 'sample';
+// e.g.
+final SecurityClient securityClient = await SecurityClient.create("my-cool-database", "1234567890");
 </code></pre>
-<h2 id="additional-information">Additional information</h2>
-<p>TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.</p>
+<p>Multiple instances can be created at once since each client will use a separate database file for each one.</p>
+<h2 id="api">API</h2>
+<p>For more information regarding all the available methods, the documentation can be found <a href="https://bfpimentel.github.io/flutter-security/security/SecurityClient-class.html">here</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>The <a href="./demo">demo</a> folder contains a demonstration of a SecurityClient's implementation.</p>
+<p>To run the demo, you <strong>must</strong> pass an environment variable called <code>GLOBAL_SECURITY_CLIENT_PASSWORD</code> with any text value.</p>
+<p>The demo project is using Redux for state management.</p>
+<h2 id="contributing">Contributing</h2>
+<p>The SecurityClient development files is located in the <a href="security/">security</a> folder of this repository.</p>
+<p>There aren't any special processes to this step, so to start contributing:</p>
+<ol>
+<li>Have Flutter installed;</li>
+<li>Clone the project;</li>
+<li>Install the dependencies with <code>flutter pub get</code>.</li>
+</ol>
 </section>
 
 
@@ -107,11 +106,11 @@ from the package authors, and more.</p>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-    <li class="self-crumb">security package</li>
+    <li><a href="https://bfpimentel.github.io/flutter-security">security_client package</a></li>
 </ol>
 
 
-    <h5 class="hidden-xs"><span class="package-name">security</span> <span class="package-kind">package</span></h5>
+    <h5 class="hidden-xs"><span class="package-name">security_client</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
       <li><a href="security/security-library.html">security</a></li>
@@ -126,8 +125,8 @@ from the package authors, and more.</p>
 
 <footer>
   <span class="no-break">
-    security
-      0.0.1
+    security_client
+      0.1.0
   </span>
 
   
